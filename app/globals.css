@@ -1,26 +1,66 @@
-@import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+* { box-sizing: border-box; }
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Noto Sans KR", sans-serif;
+  background: #f6f7f9;
+  color: #1c1e21;
+  line-height: 1.5;
 }
+.container { max-width: 760px; margin: 0 auto; padding: 24px 20px 80px; }
+nav { background: #111827; padding: 12px 20px; display: flex; gap: 16px; flex-wrap: wrap; }
+nav a { color: #e5e7eb; text-decoration: none; font-size: 14px; }
+nav a:hover { color: #fff; text-decoration: underline; }
+h1 { font-size: 22px; margin: 8px 0 4px; }
+.desc { color: #6b7280; font-size: 14px; margin: 0 0 20px; }
+button {
+  padding: 8px 14px; border: 1px solid #d1d5db; border-radius: 8px;
+  background: #fff; cursor: pointer; font-size: 14px;
+}
+button:hover { background: #f3f4f6; }
+button.primary { background: #2563eb; border-color: #2563eb; color: #fff; }
+button.danger { color: #dc2626; border-color: #fca5a5; }
+input[type="text"], input:not([type]) {
+  padding: 8px 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 14px;
+}
+.row { display: flex; gap: 8px; align-items: center; margin: 12px 0; }
+.card {
+  background: #fff; border: 1px solid #e5e7eb; border-radius: 12px;
+  padding: 16px; margin: 12px 0;
+}
+.card.clickable { cursor: pointer; }
+.card.clickable:hover { border-color: #2563eb; }
+.demo-list { list-style: none; padding: 0; }
+.demo-list li { margin: 8px 0; }
+.demo-list a { display: block; padding: 12px 16px; background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; color: inherit; text-decoration: none; }
+.demo-list a:hover { border-color: #2563eb; }
+.demo-list small { color: #6b7280; display: block; }
+
+/* 버블링/캡처링 박스 */
+.box { padding: 24px; border: 2px solid; border-radius: 10px; cursor: pointer; }
+.box > span { font-weight: 600; font-size: 13px; display: block; margin-bottom: 8px; }
+.box.parent { border-color: #2563eb; background: #dbeafe; }
+.box.child { border-color: #16a34a; background: #dcfce7; }
+.box.grandchild { border-color: #ea580c; background: #ffedd5; }
+
+/* 로그 패널 */
+.log { background: #0f172a; color: #e2e8f0; border-radius: 10px; padding: 12px 16px; margin-top: 16px; font-family: ui-monospace, monospace; font-size: 13px; min-height: 80px; }
+.log-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.log-head button { padding: 2px 8px; font-size: 12px; background: #1e293b; color: #e2e8f0; border-color: #334155; }
+.log ol { margin: 0; padding-left: 20px; }
+
+/* 리스트 */
+.chips { list-style: none; padding: 0; display: flex; gap: 8px; flex-wrap: wrap; }
+.chips li { padding: 8px 14px; border: 1px solid #d1d5db; border-radius: 999px; background: #fff; cursor: pointer; }
+.chips li.selected { background: #2563eb; color: #fff; border-color: #2563eb; }
+
+/* 전역 이벤트 */
+.badge { position: fixed; top: 60px; right: 20px; background: #111827; color: #fff; padding: 6px 12px; border-radius: 8px; font-size: 13px; z-index: 10; font-family: ui-monospace, monospace; }
+.popover-wrap { position: relative; display: inline-block; }
+.popover { position: absolute; top: 44px; left: 0; width: 220px; background: #fff; border: 1px solid #d1d5db; border-radius: 10px; padding: 14px; box-shadow: 0 8px 24px rgba(0,0,0,.12); z-index: 5; }
+.spacer { height: 150vh; background: repeating-linear-gradient(#fff, #fff 40px, #f3f4f6 40px, #f3f4f6 80px); border-radius: 10px; display: flex; align-items: flex-end; justify-content: center; padding: 20px; color: #9ca3af; }
+
+/* todo */
+.todo-list { list-style: none; padding: 0; }
+.todo-item { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; margin: 8px 0; cursor: pointer; }
+.todo-item.done span { text-decoration: line-through; color: #9ca3af; }
+.error { color: #dc2626; font-size: 14px; }
